@@ -1,0 +1,29 @@
+{
+  "family": "hello-server-prod",
+  "networkMode": "bridge",
+  "memory": "256",
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "containerDefinitions": [
+    {
+      "name": "hello-server",
+      "image": "<IMAGE_NAME>",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/hello-server-prod",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
